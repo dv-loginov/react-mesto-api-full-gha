@@ -1,0 +1,24 @@
+.add-btn {
+    width: 150px;
+    min-height: 50px;
+    background-image: url(../../images/plus.svg);
+    background-position: center;
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-color: #000;
+    cursor: pointer;
+    padding: 0;
+    border: 1px solid #FFF;
+    transition: all .25s;
+}
+
+.add-btn:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 380px) {
+    .add-btn {
+        width: 282px;
+        background-size: 16px 16px;
+    }
+}
