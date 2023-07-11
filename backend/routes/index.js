@@ -17,6 +17,10 @@ router.post('/signin', loginValidator, login);
 
 router.post('/signup', createUserValidator, createUser);
 
+router.post('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход осуществлен' });
+});
+
 router.get('/', (req, res) => {
   res.send('Server is run');
 });

@@ -5,11 +5,11 @@ class Api {
   }
 
   getInitialCards() {
-    return this._request('cards', {headers: this._headers});
+    return this._request('cards', {headers: this._headers, credentials: 'include',});
   }
 
   getUser() {
-    return this._request('users/me', {headers: this._headers});
+    return this._request('users/me', {headers: this._headers, credentials: 'include',});
   }
 
   getInitData() {
@@ -19,6 +19,7 @@ class Api {
   setUser({name, about}) {
     return this._request('users/me', {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -30,6 +31,7 @@ class Api {
   setAvatar(link) {
     return this._request('users/me/avatar', {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: link
@@ -40,6 +42,7 @@ class Api {
   addCard({name, link}) {
     return this._request('cards', {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -51,17 +54,19 @@ class Api {
   deleteCard(id) {
     return this._request(`cards/${ id }`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     });
   }
 
   changeLikeCardStatus(id, isLike) {
-    return isLike ? this.setLike(id): this.deleteLike(id);
+    return isLike ? this.setLike(id) : this.deleteLike(id);
   }
 
   setLike(id) {
     return this._request(`cards/${ id }/likes`, {
       method: 'PUT',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -69,6 +74,7 @@ class Api {
   deleteLike(id) {
     return this._request(`cards/${ id }/likes`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: this._headers,
     });
   }
@@ -87,11 +93,11 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-63',
+  baseUrl: 'http://localhost:3005',
   headers: {
-    authorization: 'd07ea27d-96e0-4847-8c63-3989714313d5',
-    'Content-Type': 'application/json'
-  }
+    "Accept" : "application/json",
+    "Content-Type": "application/json"
+  },
 });
 
 export default api;

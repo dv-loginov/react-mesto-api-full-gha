@@ -2,13 +2,8 @@ const jwt = require('jsonwebtoken');
 const BadAuth = require('../errors/BadAuth');
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  const token = req.cookies.jwt;
 
-  if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new BadAuth('Требуется авторизация'));
-  }
-
-  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {

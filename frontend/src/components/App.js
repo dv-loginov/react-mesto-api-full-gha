@@ -118,7 +118,9 @@ const App = () => {
   const handleLogin = ({email, password}) => {
     apiAuth.authorize({password, email})
       .then((data) => {
-        localStorage.setItem('jwt', data.token);
+        console.log('****** handleLogin *******');
+        console.log(data);
+        // localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         setEmail(email);
         navigate('/');
@@ -142,10 +144,10 @@ const App = () => {
   }
 
   const checkToken = () => {
-    apiAuth.checkToken(localStorage.getItem('jwt'))
+    apiAuth.checkToken()
       .then((res) => {
         setLoggedIn(true);
-        setEmail(res.data.email);
+        setEmail(res.email);
         navigate(location.pathname);
       })
       .catch((err) => {
@@ -155,10 +157,17 @@ const App = () => {
   }
 
   const handleExit = () => {
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
-    setEmail(null);
-    navigate('/');
+    apiAuth.exit()
+      .then((data) => {
+        console.log(data.message);
+        setLoggedIn(false);
+        setEmail(null);
+        navigate('/');
+
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   useEffect(() => {
