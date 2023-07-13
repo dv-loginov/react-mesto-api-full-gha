@@ -10,6 +10,8 @@ const routes = require('./routes/index');
 const errorsApi = require('./middlewares/errorsApi');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+require('dotenv').config();
+
 const {
   PORT = 3000,
   DB_URL = 'mongodb://127.0.0.1:27017/mestodb',
