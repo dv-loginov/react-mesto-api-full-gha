@@ -8,6 +8,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 const routes = require('./routes/index');
 const errorsApi = require('./middlewares/errorsApi');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const {
   PORT = 3000,
@@ -41,7 +42,11 @@ app.use(bodyParser.json());
 
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
+app.use(requestLogger);
+
 app.use(routes);
+
+app.use(errorLogger);
 
 app.use(errors());
 
