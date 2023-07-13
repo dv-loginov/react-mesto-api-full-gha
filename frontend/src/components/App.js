@@ -29,7 +29,6 @@ const App = () => {
   const [email, setEmail] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
-
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -70,7 +69,7 @@ const App = () => {
   }
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     }).catch((err) => console.error(err));
@@ -118,9 +117,6 @@ const App = () => {
   const handleLogin = ({email, password}) => {
     apiAuth.authorize({password, email})
       .then((data) => {
-        console.log('****** handleLogin *******');
-        console.log(data);
-        // localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         setEmail(email);
         navigate('/');
