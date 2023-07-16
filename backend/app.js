@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -40,7 +39,7 @@ app.use(limiter);
 
 app.use(cookieParser());
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(cors({
   origin: [

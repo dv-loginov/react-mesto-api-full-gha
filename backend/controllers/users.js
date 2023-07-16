@@ -55,9 +55,9 @@ const createUser = (req, res, next) => {
         })
         .catch((err) => {
           if (err.code === 11000) {
-            next(new ConflictRequest());
+            return next(new ConflictRequest());
           }
-          next(err);
+          return next(err);
         });
     })
     .catch(next);
@@ -82,13 +82,16 @@ const login = (req, res, next) => {
             { expiresIn: '7d' },
           );
 
+          const loginUser = user.toObject();
+          delete loginUser.password;
+
           return res.status(200)
             .cookie('jwt', token, {
               maxAge: 3600000,
               httpOnly: true,
               sameSite: true,
             })
-            .send({ user });
+            .send({ loginUser });
         })
         .catch(next);
     })

@@ -52,10 +52,12 @@ const updateUserByIdValidator = celebrate({
     .keys({
       name: Joi.string()
         .min(2)
-        .max(30),
+        .max(30)
+        .required(),
       about: Joi.string()
         .min(2)
-        .max(30),
+        .max(30)
+        .required(),
     }),
 });
 
@@ -63,7 +65,8 @@ const updateUserAvatarValidator = celebrate({
   body: Joi.object()
     .keys({
       avatar: Joi.string()
-        .pattern(patternUrl),
+        .pattern(patternUrl)
+        .required(),
     }),
 });
 

@@ -31,7 +31,7 @@ const deleteCard = (req, res, next) => {
     .catch(next);
 };
 
-const likeCard = (req, res, next) => Card
+const toggleLikeCard = (req, res, update, next) => Card
   .findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
@@ -42,16 +42,41 @@ const likeCard = (req, res, next) => Card
     .send(newCard))
   .catch(next);
 
-const dislikeCard = (req, res, next) => Card
-  .findByIdAndUpdate(
-    req.params.cardId,
-    { $pull: { likes: req.user._id } },
-    { new: true },
-  )
-  .orFail(new NotFound('Карточка не найдена'))
-  .then((newCard) => res.status(200)
-    .send(newCard))
-  .catch(next);
+const likeCard = (req, res, next) => toggleLikeCard(
+  req,
+  res,
+  { $addToSet: { likes: req.user._id } },
+  next,
+);
+
+const dislikeCard = (req, res, next) => toggleLikeCard(
+  req,
+  res,
+  { $pull: { likes: req.user._id } },
+  next,
+);
+
+// Card
+// .findByIdAndUpdate(
+//   req.params.cardId,
+//   { $addToSet: { likes: req.user._id } },
+//   { new: true },
+// )
+// .orFail(new NotFound('Карточка не найдена'))
+// .then((newCard) => res.status(200)
+//   .send(newCard))
+// .catch(next);
+
+// const dislikeCard = (req, res, next) => Card
+//   .findByIdAndUpdate(
+//     req.params.cardId,
+//     { $pull: { likes: req.user._id } },
+//     { new: true },
+//   )
+//   .orFail(new NotFound('Карточка не найдена'))
+//   .then((newCard) => res.status(200)
+//     .send(newCard))
+//   .catch(next);
 
 module.exports = {
   getCards,
