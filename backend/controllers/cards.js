@@ -56,28 +56,6 @@ const dislikeCard = (req, res, next) => toggleLikeCard(
   next,
 );
 
-// Card
-// .findByIdAndUpdate(
-//   req.params.cardId,
-//   { $addToSet: { likes: req.user._id } },
-//   { new: true },
-// )
-// .orFail(new NotFound('Карточка не найдена'))
-// .then((newCard) => res.status(200)
-//   .send(newCard))
-// .catch(next);
-
-// const dislikeCard = (req, res, next) => Card
-//   .findByIdAndUpdate(
-//     req.params.cardId,
-//     { $pull: { likes: req.user._id } },
-//     { new: true },
-//   )
-//   .orFail(new NotFound('Карточка не найдена'))
-//   .then((newCard) => res.status(200)
-//     .send(newCard))
-//   .catch(next);
-
 module.exports = {
   getCards,
   deleteCard,
