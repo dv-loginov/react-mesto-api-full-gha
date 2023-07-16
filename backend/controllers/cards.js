@@ -34,7 +34,7 @@ const deleteCard = (req, res, next) => {
 const toggleLikeCard = (req, res, update, next) => Card
   .findByIdAndUpdate(
     req.params.cardId,
-    { $addToSet: { likes: req.user._id } },
+    update,
     { new: true },
   )
   .orFail(new NotFound('Карточка не найдена'))
