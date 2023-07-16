@@ -9,8 +9,6 @@
 
 ## Ссылки на проект
 
-IP 158.160.27.80
-
-Frontend https://dilog.nomoredomains.xyz
-
-Backend https://api.dilog.nomoredomains.xyz
+    IP  158.160.27.80
+    Frontend  https://dilog.nomoredomains.xyz
+    Backend  https://api.dilog.nomoredomains.xyz
