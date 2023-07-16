@@ -60,7 +60,7 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  baseUrl: 'http://api.dilog.nomoredomains.xyz',
+  baseUrl: 'https://api.dilog.nomoredomains.xyz',
 });
 
 export default apiAuth;
