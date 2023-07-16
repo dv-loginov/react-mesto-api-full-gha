@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.27.80
+IP-адрес 158.160.27.80
 
 Frontend https://dilog.nomoredomains.xyz
 
