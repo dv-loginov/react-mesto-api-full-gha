@@ -60,7 +60,7 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  baseUrl: 'https://api.dilog.nomoredomains.xyz',
+  baseUrl: 'http://localhost:3005',
 });
 
 export default apiAuth;

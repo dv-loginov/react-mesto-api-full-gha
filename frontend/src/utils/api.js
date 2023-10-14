@@ -93,7 +93,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.dilog.nomoredomains.xyz',
+  baseUrl: 'http://localhost:3005',
   headers: {
     "Accept" : "application/json",
     "Content-Type": "application/json"
