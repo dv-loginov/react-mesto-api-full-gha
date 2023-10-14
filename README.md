@@ -1,5 +1,5 @@
 # Mesto
-Mesto - это ученый проект из двух частей: frontend и backend. 
+Mesto - это учебный проект из двух частей: frontend и backend. 
 
 Backend представляет собой REST API, а frontend SPA на React.
 
